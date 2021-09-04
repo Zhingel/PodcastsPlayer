@@ -14,6 +14,8 @@
 		EE26AE4126E271CA00759469 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE26AE4026E271CA00759469 /* Assets.xcassets */; };
 		EE26AE4426E271CA00759469 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE26AE4226E271CA00759469 /* LaunchScreen.storyboard */; };
 		EE26AE4C26E271ED00759469 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE4B26E271ED00759469 /* MainTabBarController.swift */; };
+		EE26AE5026E37FD900759469 /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */; };
+		EE26AE5226E37FF800759469 /* Podcasts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE5126E37FF800759469 /* Podcasts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		EE26AE4326E271CA00759469 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE26AE4526E271CA00759469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE26AE4B26E271ED00759469 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
+		EE26AE5126E37FF800759469 /* Podcasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcasts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +64,9 @@
 			children = (
 				EE26AE3726E271C800759469 /* AppDelegate.swift */,
 				EE26AE3926E271C800759469 /* SceneDelegate.swift */,
+				EE26AE4E26E37FB500759469 /* Controllers */,
 				EE26AE4B26E271ED00759469 /* MainTabBarController.swift */,
+				EE26AE4D26E37FA700759469 /* Models */,
 				EE26AE3B26E271C800759469 /* ViewController.swift */,
 				EE26AE3D26E271C800759469 /* Main.storyboard */,
 				EE26AE4026E271CA00759469 /* Assets.xcassets */,
@@ -68,6 +74,22 @@
 				EE26AE4526E271CA00759469 /* Info.plist */,
 			);
 			path = PodcastsPlayer;
+			sourceTree = "<group>";
+		};
+		EE26AE4D26E37FA700759469 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EE26AE5126E37FF800759469 /* Podcasts.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EE26AE4E26E37FB500759469 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +165,8 @@
 				EE26AE3C26E271C800759469 /* ViewController.swift in Sources */,
 				EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */,
 				EE26AE4C26E271ED00759469 /* MainTabBarController.swift in Sources */,
+				EE26AE5026E37FD900759469 /* PodcastsSearchController.swift in Sources */,
+				EE26AE5226E37FF800759469 /* Podcasts.swift in Sources */,
 				EE26AE3A26E271C800759469 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

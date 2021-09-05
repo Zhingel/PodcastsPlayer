@@ -10,6 +10,9 @@ import UIKit
 struct Podcast: Decodable {
     var trackName: String?
     var artistName: String?
+    var artworkUrl100: String?
+    var trackCount: Int?
+    var previewURL: String?
 }
 
 // MARK: - Welcome

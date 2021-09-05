@@ -9,8 +9,7 @@ import UIKit
 import Alamofire
 
 class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
-    var podcasts = [Podcast(trackName: "How do this App", artistName: "Stas"),
-                    Podcast(trackName: "How work with Flow", artistName: "Katya")]
+    var podcasts = [Podcast]()
     
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -35,38 +34,45 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
     }
     
     fileprivate func setupTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.tableFooterView = UIView()
+        let nib = UINib(nibName: "PodcastCell", bundle: nil)
+        tableView.register(nib , forCellReuseIdentifier: "Cell")
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let freedSpaceString = searchText.filter {!$0.isWhitespace}
-        let url = "https://itunes.apple.com/search?term=\(freedSpaceString)"
-        AF.request(url).responseData { dataResponse in
-            if let err = dataResponse.error {
-                print("Error", err)
-                return
-            }
-            guard let data = dataResponse.data else {return}
-            do {
-            let searchResult = try JSONDecoder().decode(SearchResults.self, from: data)
-                self.podcasts = searchResult.results
-                self.tableView.reloadData()
-            } catch let decodeError {
-                print("error: ", decodeError)
-            }
+        APIService.shared.fetchPodcasts(searchText: searchText) { searchResult in
+                    self.podcasts = searchResult
+                    self.tableView.reloadData()
         }
     }
     
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please enter a search term"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = .purple
+        return label
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self.podcasts.count > 0 ? 0 : 250
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         podcasts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "\(podcasts[indexPath.row].trackName ?? "") \n \(podcasts[indexPath.row].artistName ?? "")"
-        cell.textLabel?.numberOfLines = -1
-        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PodcastCell
+        cell.artistNameLabel.text = podcasts[indexPath.row].artistName ?? ""
+        cell.trackNameLabel.text = podcasts[indexPath.row].trackName ?? ""
+        cell.episodeCountLabel.text = "\(podcasts[indexPath.row].trackCount ?? 0) episodes"
+        cell.podcast = podcasts[indexPath.row]
+        
+     //   cell.imageView?.image = UIImage(named: podcasts[indexPath.row].previewURL ?? "")
+//        cell.textLabel?.text = "\(podcasts[indexPath.row].trackName ?? "") \n \(podcasts[indexPath.row].artistName ?? "")"
+//        cell.textLabel?.numberOfLines = -1
+//        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
         return cell
     }
 }

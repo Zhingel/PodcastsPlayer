@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320FA97ECBA3CCDCE2A43BC0 /* Pods_PodcastsPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F520E633ED14627A5817F2 /* Pods_PodcastsPlayer.framework */; };
 		EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3726E271C800759469 /* AppDelegate.swift */; };
 		EE26AE3A26E271C800759469 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3926E271C800759469 /* SceneDelegate.swift */; };
 		EE26AE3C26E271C800759469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3B26E271C800759469 /* ViewController.swift */; };
@@ -19,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35F520E633ED14627A5817F2 /* Pods_PodcastsPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PodcastsPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		867E7C4F4794B048CB295B33 /* Pods-PodcastsPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodcastsPlayer.release.xcconfig"; path = "Target Support Files/Pods-PodcastsPlayer/Pods-PodcastsPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		87C1B8BF8AC476A7E1795A45 /* Pods-PodcastsPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodcastsPlayer.debug.xcconfig"; path = "Target Support Files/Pods-PodcastsPlayer/Pods-PodcastsPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		EE26AE3426E271C800759469 /* PodcastsPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastsPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE26AE3726E271C800759469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE26AE3926E271C800759469 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				320FA97ECBA3CCDCE2A43BC0 /* Pods_PodcastsPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1182C32F90D5F1D6145A85DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				87C1B8BF8AC476A7E1795A45 /* Pods-PodcastsPlayer.debug.xcconfig */,
+				867E7C4F4794B048CB295B33 /* Pods-PodcastsPlayer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		586E9D41071644D30F74FADE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35F520E633ED14627A5817F2 /* Pods_PodcastsPlayer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EE26AE2B26E271C800759469 = {
 			isa = PBXGroup;
 			children = (
 				EE26AE3626E271C800759469 /* PodcastsPlayer */,
 				EE26AE3526E271C800759469 /* Products */,
+				1182C32F90D5F1D6145A85DB /* Pods */,
+				586E9D41071644D30F74FADE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE26AE4826E271CA00759469 /* Build configuration list for PBXNativeTarget "PodcastsPlayer" */;
 			buildPhases = (
+				72A9C570075875C2C13E3C10 /* [CP] Check Pods Manifest.lock */,
 				EE26AE3026E271C800759469 /* Sources */,
 				EE26AE3126E271C800759469 /* Frameworks */,
 				EE26AE3226E271C800759469 /* Resources */,
+				479ECBB5CE50BD4BFDC994EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +161,9 @@
 				Base,
 			);
 			mainGroup = EE26AE2B26E271C800759469;
+			packageReferences = (
+				EEB008B026E4BFA100D89DF3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = EE26AE3526E271C800759469 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -156,6 +185,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		479ECBB5CE50BD4BFDC994EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PodcastsPlayer/Pods-PodcastsPlayer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PodcastsPlayer/Pods-PodcastsPlayer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PodcastsPlayer/Pods-PodcastsPlayer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72A9C570075875C2C13E3C10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PodcastsPlayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EE26AE3026E271C800759469 /* Sources */ = {
@@ -311,6 +382,7 @@
 		};
 		EE26AE4926E271CA00759469 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87C1B8BF8AC476A7E1795A45 /* Pods-PodcastsPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,6 +393,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ZhingelStas.PodcastsPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -330,6 +403,7 @@
 		};
 		EE26AE4A26E271CA00759469 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 867E7C4F4794B048CB295B33 /* Pods-PodcastsPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -340,6 +414,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ZhingelStas.PodcastsPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -369,6 +444,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EEB008B026E4BFA100D89DF3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = EE26AE2C26E271C800759469 /* Project object */;
 }

@@ -9,9 +9,9 @@ import UIKit
 import Alamofire
 
 class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
-    var podcasts = [Podcast(name: "How do this App", artistName: "Stas"),
-                    Podcast(name: "How work with Flow", artistName: "Katya")]
-    var results = [Result]()
+    var podcasts = [Podcast(trackName: "How do this App", artistName: "Stas"),
+                    Podcast(trackName: "How work with Flow", artistName: "Katya")]
+    
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -31,6 +31,7 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
     }
     
     fileprivate func setupTableView() {
@@ -38,15 +39,21 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-       let url = "https://itunes.apple.com/search?term=\(searchText)"
+        let freedSpaceString = searchText.filter {!$0.isWhitespace}
+        let url = "https://itunes.apple.com/search?term=\(freedSpaceString)"
         AF.request(url).responseData { dataResponse in
             if let err = dataResponse.error {
                 print("Error", err)
                 return
             }
             guard let data = dataResponse.data else {return}
-            let dummyString = String(data: data, encoding: .utf8)
-            print(dummyString ?? "")
+            do {
+            let searchResult = try JSONDecoder().decode(SearchResults.self, from: data)
+                self.podcasts = searchResult.results
+                self.tableView.reloadData()
+            } catch let decodeError {
+                print("error: ", decodeError)
+            }
         }
     }
     
@@ -57,7 +64,7 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "\(podcasts[indexPath.row].name) \n \(podcasts[indexPath.row].artistName)"
+        cell.textLabel?.text = "\(podcasts[indexPath.row].trackName ?? "") \n \(podcasts[indexPath.row].artistName ?? "")"
         cell.textLabel?.numberOfLines = -1
         cell.imageView?.image = #imageLiteral(resourceName: "appicon")
         return cell

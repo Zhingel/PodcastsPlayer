@@ -11,6 +11,7 @@
 		EE0B68C826E52951000FDD2B /* APIServiceClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0B68C726E52951000FDD2B /* APIServiceClass.swift */; };
 		EE0B68CB26E535AA000FDD2B /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0B68CA26E535AA000FDD2B /* PodcastCell.xib */; };
 		EE0B68CD26E53734000FDD2B /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0B68CC26E53734000FDD2B /* PodcastCell.swift */; };
+		EE0B68CF26E6035F000FDD2B /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0B68CE26E6035F000FDD2B /* EpisodesController.swift */; };
 		EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3726E271C800759469 /* AppDelegate.swift */; };
 		EE26AE3A26E271C800759469 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3926E271C800759469 /* SceneDelegate.swift */; };
 		EE26AE3C26E271C800759469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3B26E271C800759469 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		EE0B68C726E52951000FDD2B /* APIServiceClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceClass.swift; sourceTree = "<group>"; };
 		EE0B68CA26E535AA000FDD2B /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
 		EE0B68CC26E53734000FDD2B /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
+		EE0B68CE26E6035F000FDD2B /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
 		EE26AE3426E271C800759469 /* PodcastsPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastsPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE26AE3726E271C800759469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE26AE3926E271C800759469 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */,
+				EE0B68CE26E6035F000FDD2B /* EpisodesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				EE0B68C826E52951000FDD2B /* APIServiceClass.swift in Sources */,
 				EE26AE5226E37FF800759469 /* Podcasts.swift in Sources */,
 				EE26AE3A26E271C800759469 /* SceneDelegate.swift in Sources */,
+				EE0B68CF26E6035F000FDD2B /* EpisodesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

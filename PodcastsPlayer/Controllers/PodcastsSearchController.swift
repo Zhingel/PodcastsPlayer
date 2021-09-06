@@ -75,4 +75,16 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
 //        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
         return cell
     }
+
+
+
+//MARK: - TableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episodesController = EpisodesController()
+        navigationController?.pushViewController(episodesController, animated: true)
+        episodesController.navigationItem.title = podcasts[indexPath.row].trackName
+    }
+
+
 }

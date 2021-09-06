@@ -12,7 +12,7 @@ struct Podcast: Decodable {
     var artistName: String?
     var artworkUrl100: String?
     var trackCount: Int?
-    var previewURL: String?
+    var feedUrl: String?
 }
 
 // MARK: - Welcome

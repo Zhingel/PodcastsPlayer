@@ -6,16 +6,55 @@
 //
 
 import UIKit
+import FeedKit
+
 class EpisodesController: UITableViewController {
     
     struct Episode {
        var title: String
     }
-    var episodes = [ Episode(title: "1 episode"),
-                     Episode(title: "2 episode"),
-                     Episode(title: "3 episode"),
-                     Episode(title: "4 episode")
-    ]
+    
+    var podcast: Podcast? {
+        didSet {
+            navigationItem.title = podcast?.trackName
+            fetchEpisodes()
+        }
+    }
+    func fetchEpisodes() {
+        print("Fetch episodes url and boobbobobobobobobobobo:",podcast?.feedUrl ?? "")
+        guard let feedUrl = podcast?.feedUrl else {return}
+        guard let url = URL(string: feedUrl) else {return}
+        let parser = FeedParser(URL: url)
+        parser.parseAsync(result: { result in
+            print("successful print ololololoaoaoaoaoaoaoa", result)
+            switch result {
+            case .success(let feed):
+                
+                
+                // Or alternatively...
+                switch feed {
+                case .atom(_): break       // Atom Syndication Format Feed Model
+                case let .rss(feed):
+                    var episodes = [Episode]()
+                    feed.items?.forEach({ feedItem in
+                        let episode = Episode(title: feedItem.title ?? "")
+                        episodes.append(episode)
+                    })
+                    DispatchQueue.main.async {
+                        self.episodes = episodes
+                        self.tableView.reloadData()
+                    }
+                    break
+                    
+                case .json(_): break       // JSON Feed Model
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        })
+    }
+    var episodes = [Episode]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

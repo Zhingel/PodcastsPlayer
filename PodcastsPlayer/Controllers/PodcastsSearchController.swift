@@ -83,7 +83,7 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episodesController = EpisodesController()
         navigationController?.pushViewController(episodesController, animated: true)
-        episodesController.navigationItem.title = podcasts[indexPath.row].trackName
+        episodesController.podcast = podcasts[indexPath.row]
     }
 
 

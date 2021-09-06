@@ -12,6 +12,9 @@
 		EE0B68CB26E535AA000FDD2B /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0B68CA26E535AA000FDD2B /* PodcastCell.xib */; };
 		EE0B68CD26E53734000FDD2B /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0B68CC26E53734000FDD2B /* PodcastCell.swift */; };
 		EE0B68CF26E6035F000FDD2B /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0B68CE26E6035F000FDD2B /* EpisodesController.swift */; };
+		EE0B68D426E65CF1000FDD2B /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0B68D326E65CF1000FDD2B /* Episode.swift */; };
+		EE0B68D726E65DA4000FDD2B /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0B68D526E65DA4000FDD2B /* EpisodeCell.swift */; };
+		EE0B68D826E65DA4000FDD2B /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE0B68D626E65DA4000FDD2B /* EpisodeCell.xib */; };
 		EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3726E271C800759469 /* AppDelegate.swift */; };
 		EE26AE3A26E271C800759469 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3926E271C800759469 /* SceneDelegate.swift */; };
 		EE26AE3C26E271C800759469 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE3B26E271C800759469 /* ViewController.swift */; };
@@ -31,6 +34,9 @@
 		EE0B68CA26E535AA000FDD2B /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
 		EE0B68CC26E53734000FDD2B /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
 		EE0B68CE26E6035F000FDD2B /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
+		EE0B68D326E65CF1000FDD2B /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		EE0B68D526E65DA4000FDD2B /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		EE0B68D626E65DA4000FDD2B /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
 		EE26AE3426E271C800759469 /* PodcastsPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PodcastsPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE26AE3726E271C800759469 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE26AE3926E271C800759469 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 			children = (
 				EE0B68CA26E535AA000FDD2B /* PodcastCell.xib */,
 				EE0B68CC26E53734000FDD2B /* PodcastCell.swift */,
+				EE0B68D526E65DA4000FDD2B /* EpisodeCell.swift */,
+				EE0B68D626E65DA4000FDD2B /* EpisodeCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -131,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				EE26AE5126E37FF800759469 /* Podcasts.swift */,
+				EE0B68D326E65CF1000FDD2B /* Episode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +217,7 @@
 			files = (
 				EE26AE4426E271CA00759469 /* LaunchScreen.storyboard in Resources */,
 				EE26AE4126E271CA00759469 /* Assets.xcassets in Resources */,
+				EE0B68D826E65DA4000FDD2B /* EpisodeCell.xib in Resources */,
 				EE0B68CB26E535AA000FDD2B /* PodcastCell.xib in Resources */,
 				EE26AE3F26E271C800759469 /* Main.storyboard in Resources */,
 			);
@@ -265,6 +275,8 @@
 				EE26AE3C26E271C800759469 /* ViewController.swift in Sources */,
 				EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */,
 				EE0B68CD26E53734000FDD2B /* PodcastCell.swift in Sources */,
+				EE0B68D726E65DA4000FDD2B /* EpisodeCell.swift in Sources */,
+				EE0B68D426E65CF1000FDD2B /* Episode.swift in Sources */,
 				EE26AE4C26E271ED00759469 /* MainTabBarController.swift in Sources */,
 				EE26AE5026E37FD900759469 /* PodcastsSearchController.swift in Sources */,
 				EE0B68C826E52951000FDD2B /* APIServiceClass.swift in Sources */,

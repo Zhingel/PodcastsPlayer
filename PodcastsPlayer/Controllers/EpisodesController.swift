@@ -10,10 +10,6 @@ import FeedKit
 
 class EpisodesController: UITableViewController {
     
-    struct Episode {
-       var title: String
-    }
-    
     var podcast: Podcast? {
         didSet {
             navigationItem.title = podcast?.trackName
@@ -37,7 +33,7 @@ class EpisodesController: UITableViewController {
                 case let .rss(feed):
                     var episodes = [Episode]()
                     feed.items?.forEach({ feedItem in
-                        let episode = Episode(title: feedItem.title ?? "")
+                        let episode = Episode(feedItem: feedItem)
                         episodes.append(episode)
                     })
                     DispatchQueue.main.async {
@@ -58,7 +54,7 @@ class EpisodesController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UINib(nibName: "EpisodeCell", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.tableFooterView = UIView()
     }
     
@@ -66,8 +62,8 @@ class EpisodesController: UITableViewController {
         episodes.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = episodes[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EpisodeCell
+        cell.episode = episodes[indexPath.row]
         return cell
     }
 }

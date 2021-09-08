@@ -31,9 +31,13 @@ class EpisodesController: UITableViewController {
                 switch feed {
                 case .atom(_): break       // Atom Syndication Format Feed Model
                 case let .rss(feed):
+                    let imageUrl = feed.iTunes?.iTunesImage?.attributes?.href
                     var episodes = [Episode]()
                     feed.items?.forEach({ feedItem in
-                        let episode = Episode(feedItem: feedItem)
+                        var episode = Episode(feedItem: feedItem)
+                        if episode.imageUrl == nil {
+                            episode.imageUrl = imageUrl
+                        }
                         episodes.append(episode)
                     })
                     DispatchQueue.main.async {

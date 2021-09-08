@@ -63,10 +63,7 @@ class EpisodesController: UITableViewController {
         let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self)?.first as! PlayerDetailsView
         let window = UIApplication.shared.windows.filter{$0.isKeyWindow}.first
         playerDetailsView.frame = view.frame
-        playerDetailsView.titleLabel.text = episode.title
-        let url = URL(string: episode.imageUrl ?? "")
-        playerDetailsView.imageLabel.sd_setImage(with: url)
-        playerDetailsView.authorLabel.text = episode.author
+        playerDetailsView.episode = episode
         window?.addSubview(playerDetailsView)
     }
     

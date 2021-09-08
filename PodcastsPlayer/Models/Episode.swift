@@ -12,9 +12,11 @@ struct Episode {
     let pubDate: Date
     let description: String
     let author: String
+    let streemUrl: String
     var imageUrl: String?
     
     init(feedItem: RSSFeedItem) {
+        self.streemUrl = feedItem.enclosure?.attributes?.url ?? ""
         self.title = feedItem.title ?? ""
         self.author = feedItem.iTunes?.iTunesAuthor ?? ""
         self.pubDate = feedItem.pubDate ?? Date()

@@ -66,6 +66,7 @@ class EpisodesController: UITableViewController {
         playerDetailsView.titleLabel.text = episode.title
         let url = URL(string: episode.imageUrl ?? "")
         playerDetailsView.imageLabel.sd_setImage(with: url)
+        playerDetailsView.authorLabel.text = episode.author
         window?.addSubview(playerDetailsView)
     }
     

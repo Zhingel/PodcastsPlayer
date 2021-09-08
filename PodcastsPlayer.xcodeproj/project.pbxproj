@@ -24,6 +24,8 @@
 		EE26AE4C26E271ED00759469 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE4B26E271ED00759469 /* MainTabBarController.swift */; };
 		EE26AE5026E37FD900759469 /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */; };
 		EE26AE5226E37FF800759469 /* Podcasts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE5126E37FF800759469 /* Podcasts.swift */; };
+		EE85E3D226E8CD3A0027EF64 /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */; };
+		EE85E3D426E8D6760027EF64 /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		EE26AE4B26E271ED00759469 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
 		EE26AE5126E37FF800759469 /* Podcasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcasts.swift; sourceTree = "<group>"; };
+		EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
+		EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 			children = (
 				EE0B68CA26E535AA000FDD2B /* PodcastCell.xib */,
 				EE0B68CC26E53734000FDD2B /* PodcastCell.swift */,
+				EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */,
+				EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */,
 				EE0B68D526E65DA4000FDD2B /* EpisodeCell.swift */,
 				EE0B68D626E65DA4000FDD2B /* EpisodeCell.xib */,
 			);
@@ -215,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE85E3D226E8CD3A0027EF64 /* PlayerDetailsView.xib in Resources */,
 				EE26AE4426E271CA00759469 /* LaunchScreen.storyboard in Resources */,
 				EE26AE4126E271CA00759469 /* Assets.xcassets in Resources */,
 				EE0B68D826E65DA4000FDD2B /* EpisodeCell.xib in Resources */,
@@ -272,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE85E3D426E8D6760027EF64 /* PlayerDetailsView.swift in Sources */,
 				EE26AE3C26E271C800759469 /* ViewController.swift in Sources */,
 				EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */,
 				EE0B68CD26E53734000FDD2B /* PodcastCell.swift in Sources */,

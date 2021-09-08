@@ -25,11 +25,8 @@ class EpisodesController: UITableViewController {
             print("successful print ololololoaoaoaoaoaoaoa", result)
             switch result {
             case .success(let feed):
-                
-                
                 // Or alternatively...
                 switch feed {
-                case .atom(_): break       // Atom Syndication Format Feed Model
                 case let .rss(feed):
                     let imageUrl = feed.iTunes?.iTunesImage?.attributes?.href
                     var episodes = [Episode]()
@@ -45,10 +42,8 @@ class EpisodesController: UITableViewController {
                         self.tableView.reloadData()
                     }
                     break
-                    
-                case .json(_): break       // JSON Feed Model
+                default: print("error")
                 }
-                
             case .failure(let error):
                 print(error)
             }
@@ -60,6 +55,18 @@ class EpisodesController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "EpisodeCell", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.tableFooterView = UIView()
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episode = self.episodes[indexPath.row]
+        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self)?.first as! PlayerDetailsView
+        let window = UIApplication.shared.windows.filter{$0.isKeyWindow}.first
+        playerDetailsView.frame = view.frame
+        playerDetailsView.titleLabel.text = episode.title
+        let url = URL(string: episode.imageUrl ?? "")
+        playerDetailsView.imageLabel.sd_setImage(with: url)
+        window?.addSubview(playerDetailsView)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

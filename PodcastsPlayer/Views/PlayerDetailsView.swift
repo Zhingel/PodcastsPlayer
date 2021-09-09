@@ -28,6 +28,16 @@ class PlayerDetailsView: UIView {
         avPlayer.automaticallyWaitsToMinimizeStalling = false
         return avPlayer
     }()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let time = CMTimeMake(value: 1, timescale: 3)
+        let times = [NSValue(time: time)]
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
+            print("booooom")
+            self.inLargeEpisodeImageView()
+        }
+    }
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var playButton: UIButton! {
         didSet {
@@ -39,17 +49,28 @@ class PlayerDetailsView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            inLargeEpisodeImageView()
         } else {
             player.pause()
             playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            shrinkEpisodeImageView()
         }
     }
     @IBAction func dismissButton(_ sender: UIButton) {
-      //  self.isHidden = true
+        self.isHidden = true
+    }
+    
+    func inLargeEpisodeImageView() {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.imageLabel.transform = .identity
         }, completion: nil)
     }
+    func shrinkEpisodeImageView() {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.imageLabel.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        }, completion: nil) 
+    }
+     
     @IBOutlet weak var imageLabel: UIImageView! {
         didSet {
             let scale: CGFloat  = 0.7

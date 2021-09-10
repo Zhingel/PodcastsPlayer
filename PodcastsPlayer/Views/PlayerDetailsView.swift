@@ -89,5 +89,17 @@ class PlayerDetailsView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var durratinLabel: UILabel!
     @IBOutlet weak var currentTimeSlider: UISlider!
-    
+    @IBAction func actionCurrentTime(_ sender: UISlider) {
+        currentTimeSlider.value = sender.value
+        player.seek(to: CMTimeMakeWithSeconds(Float64(sender.value), preferredTimescale: Int32(NSEC_PER_SEC)))
+    }
+    @IBAction func timeChangeRewind(_ sender: UIButton) {
+        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value) - 15, preferredTimescale: Int32(NSEC_PER_SEC)))
+    }
+    @IBAction func timeChangeForward(_ sender: UIButton) {
+        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value) + 15, preferredTimescale: Int32(NSEC_PER_SEC)))
+    }
+    @IBAction func volumeChange(_ sender: UISlider) {
+        player.volume = sender.value
+    }
 }

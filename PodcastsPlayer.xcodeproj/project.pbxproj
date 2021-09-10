@@ -26,6 +26,7 @@
 		EE26AE5226E37FF800759469 /* Podcasts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE5126E37FF800759469 /* Podcasts.swift */; };
 		EE85E3D226E8CD3A0027EF64 /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */; };
 		EE85E3D426E8D6760027EF64 /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */; };
+		EE85E3D626EB9EFB0027EF64 /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85E3D526EB9EFB0027EF64 /* CMTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		EE26AE5126E37FF800759469 /* Podcasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcasts.swift; sourceTree = "<group>"; };
 		EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
 		EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
+		EE85E3D526EB9EFB0027EF64 /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CMTime.swift; path = /Users/staszingel/Documents/Development/07.21/PodcastsPlayer/PodcastsPlayer/CMTime.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				EE26AE3726E271C800759469 /* AppDelegate.swift */,
+				EE85E3D526EB9EFB0027EF64 /* CMTime.swift */,
 				EE0B68C926E5346D000FDD2B /* Views */,
 				EE26AE3926E271C800759469 /* SceneDelegate.swift */,
 				EE26AE4E26E37FB500759469 /* Controllers */,
@@ -285,6 +288,7 @@
 				EE0B68CD26E53734000FDD2B /* PodcastCell.swift in Sources */,
 				EE0B68D726E65DA4000FDD2B /* EpisodeCell.swift in Sources */,
 				EE0B68D426E65CF1000FDD2B /* Episode.swift in Sources */,
+				EE85E3D626EB9EFB0027EF64 /* CMTime.swift in Sources */,
 				EE26AE4C26E271ED00759469 /* MainTabBarController.swift in Sources */,
 				EE26AE5026E37FD900759469 /* PodcastsSearchController.swift in Sources */,
 				EE0B68C826E52951000FDD2B /* APIServiceClass.swift in Sources */,

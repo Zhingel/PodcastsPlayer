@@ -31,10 +31,17 @@ class PlayerDetailsView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
+            self.currentTimeLabel.text = time.toDisplayString()
+            let durationTime = self.player.currentItem?.duration
+            self.durratinLabel.text = durationTime?.toDisplayString()
+            self.currentTimeSlider.maximumValue = Float(CMTimeGetSeconds(durationTime ?? CMTimeMake(value: 1, timescale: 1)))
+            self.currentTimeSlider.value = Float(CMTimeGetSeconds(time))
+        }
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
         player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
-            print("booooom")
             self.inLargeEpisodeImageView()
         }
     }
@@ -68,7 +75,7 @@ class PlayerDetailsView: UIView {
     func shrinkEpisodeImageView() {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.imageLabel.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-        }, completion: nil) 
+        }, completion: nil)
     }
      
     @IBOutlet weak var imageLabel: UIImageView! {
@@ -78,5 +85,9 @@ class PlayerDetailsView: UIView {
             imageLabel.transform = CGAffineTransform(scaleX: scale, y: scale)
         }
     }
+    @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var durratinLabel: UILabel!
+    @IBOutlet weak var currentTimeSlider: UISlider!
+    
 }

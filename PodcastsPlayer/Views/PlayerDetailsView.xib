@@ -33,7 +33,7 @@
                                 <constraint firstAttribute="width" secondItem="qjp-TP-8ZS" secondAttribute="height" id="R0b-kE-R7K"/>
                             </constraints>
                         </imageView>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Xz-LW-lwe">
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="9Xz-LW-lwe">
                             <rect key="frame" x="-2" y="424" width="370" height="37"/>
                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
@@ -153,6 +153,9 @@
             </constraints>
             <connections>
                 <outlet property="authorLabel" destination="bTZ-Je-Q9C" id="qxH-eO-8qq"/>
+                <outlet property="currentTimeLabel" destination="o3X-Ny-7Y9" id="EsG-ph-an6"/>
+                <outlet property="currentTimeSlider" destination="9Xz-LW-lwe" id="VFj-VT-WwF"/>
+                <outlet property="durratinLabel" destination="Vru-pW-bne" id="x5a-81-2qT"/>
                 <outlet property="imageLabel" destination="qjp-TP-8ZS" id="20j-SC-7TI"/>
                 <outlet property="playButton" destination="pPP-Jt-XUm" id="suA-ds-H0P"/>
                 <outlet property="titleLabel" destination="NAm-vt-ZyW" id="CoK-Py-ZIl"/>

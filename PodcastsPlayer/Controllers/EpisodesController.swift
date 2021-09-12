@@ -9,13 +9,47 @@ import UIKit
 import FeedKit
 
 class EpisodesController: UITableViewController {
-    
+    var episodes = [Episode]()
     var podcast: Podcast? {
         didSet {
             navigationItem.title = podcast?.trackName
             fetchEpisodes()
         }
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: "EpisodeCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.tableFooterView = UIView()
+    }
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.color = .darkGray
+        if episodes.isEmpty {
+            activityIndicatorView.startAnimating()
+        }
+        return activityIndicatorView
+    }
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 200
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episode = self.episodes[indexPath.row]
+        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self)?.first as! PlayerDetailsView
+        let window = UIApplication.shared.windows.filter{$0.isKeyWindow}.first
+        playerDetailsView.frame = view.frame
+        playerDetailsView.episode = episode
+        window?.addSubview(playerDetailsView)
+    }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        episodes.count
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EpisodeCell
+        cell.episode = episodes[indexPath.row]
+        return cell
+    }
+    
+    //MARK: - Fetch episodes
     func fetchEpisodes() {
         guard let feedUrl = podcast?.feedUrl else {return}
         guard let url = URL(string: feedUrl) else {return}
@@ -48,43 +82,5 @@ class EpisodesController: UITableViewController {
                 }
             })
         }
-    }
-    var episodes = [Episode]()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.register(UINib(nibName: "EpisodeCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        tableView.tableFooterView = UIView()
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let activityIndicatorView = UIActivityIndicatorView(style: .large)
-        activityIndicatorView.color = .darkGray
-        if episodes.isEmpty {
-            activityIndicatorView.startAnimating()
-        }
-        return activityIndicatorView
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 200
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let episode = self.episodes[indexPath.row]
-        let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self)?.first as! PlayerDetailsView
-        let window = UIApplication.shared.windows.filter{$0.isKeyWindow}.first
-        playerDetailsView.frame = view.frame
-        playerDetailsView.episode = episode
-        window?.addSubview(playerDetailsView)
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        episodes.count
-    }
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EpisodeCell
-        cell.episode = episodes[indexPath.row]
-        return cell
     }
 }

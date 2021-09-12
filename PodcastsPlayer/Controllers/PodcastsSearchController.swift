@@ -38,14 +38,16 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(nib , forCellReuseIdentifier: "Cell")
     }
-    
+    var timer: Timer?
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        APIService.shared.fetchPodcasts(searchText: searchText) { searchResult in
-                    self.podcasts = searchResult
-                    self.tableView.reloadData()
-        }
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            APIService.shared.fetchPodcasts(searchText: searchText) { searchResult in
+                        self.podcasts = searchResult
+                        self.tableView.reloadData()
+            }
+        })
     }
-    
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()

@@ -32,20 +32,20 @@ class PlayerDetailsView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         let interval = CMTimeMake(value: 1, timescale: 2)
-        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { time in
-            self.currentTimeLabel.text = time.toDisplayString()
-            let durationTime = self.player.currentItem?.duration
-            self.durratinLabel.text = durationTime?.toDisplayString()
-            self.currentTimeSlider.maximumValue = Float(CMTimeGetSeconds(durationTime ?? CMTimeMake(value: 1, timescale: 1)))
-            self.currentTimeSlider.value = Float(CMTimeGetSeconds(time))
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
+            self?.currentTimeLabel.text = time.toDisplayString()
+            let durationTime = self?.player.currentItem?.duration
+            self?.durratinLabel.text = durationTime?.toDisplayString()
+            self?.currentTimeSlider.maximumValue = Float(CMTimeGetSeconds(durationTime ?? CMTimeMake(value: 1, timescale: 1)))
+            self?.currentTimeSlider.value = Float(CMTimeGetSeconds(time))
         }
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
-        player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
-            self.inLargeEpisodeImageView()
+        player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
+            self?.inLargeEpisodeImageView()
         }
     }
-    @IBOutlet weak var authorLabel: UILabel!
+
     @IBOutlet weak var playButton: UIButton! {
         didSet {
             playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
@@ -63,9 +63,11 @@ class PlayerDetailsView: UIView {
             shrinkEpisodeImageView()
         }
     }
-    @IBAction func dismissButton(_ sender: UIButton) {
-        self.isHidden = true
-    }
+ 
+    
+    
+    
+    //MARK: - Animations image
     
     func inLargeEpisodeImageView() {
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -78,6 +80,11 @@ class PlayerDetailsView: UIView {
         }, completion: nil)
     }
      
+   
+    
+    
+    //MARK: - Outlets and Actions
+    
     @IBOutlet weak var imageLabel: UIImageView! {
         didSet {
             let scale: CGFloat  = 0.7
@@ -102,4 +109,10 @@ class PlayerDetailsView: UIView {
     @IBAction func volumeChange(_ sender: UISlider) {
         player.volume = sender.value
     }
+    @IBAction func dismissButton(_ sender: UIButton) {
+         self.isHidden = true
+        player.pause()
+     }
+    @IBOutlet weak var authorLabel: UILabel!
 }
+

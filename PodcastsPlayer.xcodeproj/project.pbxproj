@@ -24,9 +24,10 @@
 		EE26AE4C26E271ED00759469 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE4B26E271ED00759469 /* MainTabBarController.swift */; };
 		EE26AE5026E37FD900759469 /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */; };
 		EE26AE5226E37FF800759469 /* Podcasts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE26AE5126E37FF800759469 /* Podcasts.swift */; };
+		EE6BD19526EE75B80004818E /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6BD19426EE75B80004818E /* CMTime.swift */; };
+		EE6BD19726EE75D80004818E /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6BD19626EE75D80004818E /* CMTime.swift */; };
 		EE85E3D226E8CD3A0027EF64 /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */; };
 		EE85E3D426E8D6760027EF64 /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */; };
-		EE85E3D626EB9EFB0027EF64 /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85E3D526EB9EFB0027EF64 /* CMTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,9 +52,10 @@
 		EE26AE4B26E271ED00759469 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
 		EE26AE5126E37FF800759469 /* Podcasts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcasts.swift; sourceTree = "<group>"; };
+		EE6BD19426EE75B80004818E /* CMTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
+		EE6BD19626EE75D80004818E /* CMTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
 		EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
 		EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
-		EE85E3D526EB9EFB0027EF64 /* CMTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CMTime.swift; path = /Users/staszingel/Documents/Development/07.21/PodcastsPlayer/PodcastsPlayer/CMTime.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,13 +130,12 @@
 			isa = PBXGroup;
 			children = (
 				EE26AE3726E271C800759469 /* AppDelegate.swift */,
-				EE85E3D526EB9EFB0027EF64 /* CMTime.swift */,
+				EE6BD19626EE75D80004818E /* CMTime.swift */,
+				EE6BD19426EE75B80004818E /* CMTime.swift */,
 				EE0B68C926E5346D000FDD2B /* Views */,
 				EE26AE3926E271C800759469 /* SceneDelegate.swift */,
 				EE26AE4E26E37FB500759469 /* Controllers */,
-				EE26AE4B26E271ED00759469 /* MainTabBarController.swift */,
 				EE26AE4D26E37FA700759469 /* Models */,
-				EE26AE3B26E271C800759469 /* ViewController.swift */,
 				EE0B68C626E52931000FDD2B /* API */,
 				EE26AE3D26E271C800759469 /* Main.storyboard */,
 				EE26AE4026E271CA00759469 /* Assets.xcassets */,
@@ -158,6 +159,8 @@
 			children = (
 				EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */,
 				EE0B68CE26E6035F000FDD2B /* EpisodesController.swift */,
+				EE26AE4B26E271ED00759469 /* MainTabBarController.swift */,
+				EE26AE3B26E271C800759469 /* ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -286,9 +289,10 @@
 				EE26AE3C26E271C800759469 /* ViewController.swift in Sources */,
 				EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */,
 				EE0B68CD26E53734000FDD2B /* PodcastCell.swift in Sources */,
+				EE6BD19526EE75B80004818E /* CMTime.swift in Sources */,
+				EE6BD19726EE75D80004818E /* CMTime.swift in Sources */,
 				EE0B68D726E65DA4000FDD2B /* EpisodeCell.swift in Sources */,
 				EE0B68D426E65CF1000FDD2B /* Episode.swift in Sources */,
-				EE85E3D626EB9EFB0027EF64 /* CMTime.swift in Sources */,
 				EE26AE4C26E271ED00759469 /* MainTabBarController.swift in Sources */,
 				EE26AE5026E37FD900759469 /* PodcastsSearchController.swift in Sources */,
 				EE0B68C826E52951000FDD2B /* APIServiceClass.swift in Sources */,

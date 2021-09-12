@@ -17,37 +17,37 @@ class EpisodesController: UITableViewController {
         }
     }
     func fetchEpisodes() {
-        print("Fetch episodes url and boobbobobobobobobobobo:",podcast?.feedUrl ?? "")
         guard let feedUrl = podcast?.feedUrl else {return}
         guard let url = URL(string: feedUrl) else {return}
-        let parser = FeedParser(URL: url)
-        parser.parseAsync(result: { result in
-            print("successful print ololololoaoaoaoaoaoaoa", result)
-            switch result {
-            case .success(let feed):
-                // Or alternatively...
-                switch feed {
-                case let .rss(feed):
-                    let imageUrl = feed.iTunes?.iTunesImage?.attributes?.href
-                    var episodes = [Episode]()
-                    feed.items?.forEach({ feedItem in
-                        var episode = Episode(feedItem: feedItem)
-                        if episode.imageUrl == nil {
-                            episode.imageUrl = imageUrl
+        DispatchQueue.global(qos: .background).async {
+            let parser = FeedParser(URL: url)
+            parser.parseAsync(result: { result in
+                switch result {
+                case .success(let feed):
+                    // Or alternatively...
+                    switch feed {
+                    case let .rss(feed):
+                        let imageUrl = feed.iTunes?.iTunesImage?.attributes?.href
+                        var episodes = [Episode]()
+                        feed.items?.forEach({ feedItem in
+                            var episode = Episode(feedItem: feedItem)
+                            if episode.imageUrl == nil {
+                                episode.imageUrl = imageUrl
+                            }
+                            episodes.append(episode)
+                        })
+                        DispatchQueue.main.async {
+                            self.episodes = episodes
+                            self.tableView.reloadData()
                         }
-                        episodes.append(episode)
-                    })
-                    DispatchQueue.main.async {
-                        self.episodes = episodes
-                        self.tableView.reloadData()
+                        break
+                    default: print("error")
                     }
-                    break
-                default: print("error")
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
-            }
-        })
+            })
+        }
     }
     var episodes = [Episode]()
     
@@ -57,6 +57,18 @@ class EpisodesController: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.color = .darkGray
+        if episodes.isEmpty {
+            activityIndicatorView.startAnimating()
+        }
+        return activityIndicatorView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 200
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episode = self.episodes[indexPath.row]

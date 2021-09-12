@@ -10,8 +10,6 @@ import Alamofire
 
 class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
     var podcasts = [Podcast]()
-    
-    
     let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
@@ -19,20 +17,13 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
         setupTableView()
         setupSearchBar()
     }
-    
-    
-    
-    
     //MARK:- TableViewSetUp
-    
-    
     fileprivate func setupSearchBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
     }
-    
     fileprivate func setupTableView() {
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
@@ -48,7 +39,6 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
             }
         })
     }
-    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.text = "Please enter a search term"
@@ -70,23 +60,12 @@ class PodcastsSearchController: UITableViewController, UISearchBarDelegate{
         cell.trackNameLabel.text = podcasts[indexPath.row].trackName ?? ""
         cell.episodeCountLabel.text = "\(podcasts[indexPath.row].trackCount ?? 0) episodes"
         cell.podcast = podcasts[indexPath.row]
-        
-     //   cell.imageView?.image = UIImage(named: podcasts[indexPath.row].previewURL ?? "")
-//        cell.textLabel?.text = "\(podcasts[indexPath.row].trackName ?? "") \n \(podcasts[indexPath.row].artistName ?? "")"
-//        cell.textLabel?.numberOfLines = -1
-//        cell.imageView?.image = #imageLiteral(resourceName: "appicon")
         return cell
     }
-
-
-
 //MARK: - TableViewDelegate
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episodesController = EpisodesController()
         navigationController?.pushViewController(episodesController, animated: true)
         episodesController.podcast = podcasts[indexPath.row]
     }
-
-
 }

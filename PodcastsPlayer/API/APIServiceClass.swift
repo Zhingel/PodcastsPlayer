@@ -9,7 +9,6 @@ import Foundation
 import Alamofire
 
 class APIService {
-    
     static let shared = APIService()
     func fetchPodcasts(searchText: String, compilitionHendler: @escaping ([Podcast]) -> ()) {
         let freedSpaceString = searchText.filter {!$0.isWhitespace}

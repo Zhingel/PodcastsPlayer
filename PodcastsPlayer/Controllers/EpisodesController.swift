@@ -16,11 +16,16 @@ class EpisodesController: UITableViewController {
             fetchEpisodes()
         }
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "EpisodeCell", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.tableFooterView = UIView()
     }
+    
+    
+    
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.color = .darkGray

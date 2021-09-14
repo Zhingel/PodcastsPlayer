@@ -13,8 +13,10 @@ class PlayerDetailsView: UIView {
         didSet {
             authorLabel.text = episode.author
             titleLabel.text = episode.title
+            episodeTitleMiniPlayer.text = episode.title
             let url = URL(string: episode.imageUrl ?? "")
             imageLabel.sd_setImage(with: url)
+            appIconMiniPlayer.sd_setImage(with: url)
             playEpisode()
         }
     }
@@ -62,10 +64,12 @@ class PlayerDetailsView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            playButtonminiPlayer.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
             inLargeEpisodeImageView()
         } else {
             player.pause()
             playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            playButtonminiPlayer.setImage(#imageLiteral(resourceName: "play"), for: .normal)
             shrinkEpisodeImageView()
         }
     }
@@ -91,6 +95,8 @@ class PlayerDetailsView: UIView {
     
     //MARK: - Outlets and Actions
     
+    @IBOutlet weak var maximizedStackView: UIStackView!
+  
     @IBOutlet weak var imageLabel: UIImageView! {
         didSet {
             let scale: CGFloat  = 0.7
@@ -118,8 +124,24 @@ class PlayerDetailsView: UIView {
     @IBAction func dismissButton(_ sender: UIButton) {
         let minimize = UIApplication.shared.windows[0].rootViewController as? MainTabBarController
         minimize?.minimizePlayerDetails()
-        player.pause()
      }
     @IBOutlet weak var authorLabel: UILabel!
+    
+    
+    
+    //MARK: - MiniPlayer Outlets and Actions
+    @IBOutlet weak var miniPlayerView: UIView!
+    
+    @IBOutlet weak var episodeTitleMiniPlayer: UILabel!
+    @IBOutlet weak var appIconMiniPlayer: UIImageView!
+  
+    @IBOutlet weak var playButtonminiPlayer: UIButton! {
+        didSet {
+            playButtonminiPlayer.addTarget(self, action: #selector(playPause), for: .touchUpInside)
+        }
+    }
+    @IBAction func forwardButtonMiniPlayer(_ sender: Any) {
+        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value) + 15, preferredTimescale: Int32(NSEC_PER_SEC)))
+    }
 }
 

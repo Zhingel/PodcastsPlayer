@@ -22,6 +22,8 @@ class MainTabBarController: UITabBarController {
     @objc func minimizePlayerDetails() {
         maximalAnchorConstraints.isActive = false
         minimalAnchorConstraints.isActive = true
+        playerDetailsView.miniPlayerView.isHidden = false
+        playerDetailsView.maximizedStackView.isHidden = true
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut) {
             self.view.layoutIfNeeded()
             self.tabBar.isHidden = false
@@ -35,6 +37,8 @@ class MainTabBarController: UITabBarController {
         maximalAnchorConstraints.isActive = true
         maximalAnchorConstraints.constant = 0
         minimalAnchorConstraints.isActive = false
+        playerDetailsView.miniPlayerView.isHidden = true
+        playerDetailsView.maximizedStackView.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut) {
             self.view.layoutIfNeeded()
             self.tabBar.isHidden = true

@@ -30,6 +30,7 @@ class PlayerDetailsView: UIView {
     }()
     
     override func awakeFromNib() {
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
         super.awakeFromNib()
         let interval = CMTimeMake(value: 1, timescale: 2)
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
@@ -46,6 +47,11 @@ class PlayerDetailsView: UIView {
         }
     }
 
+    @objc func handleTapMaximize() {
+        let mainTabBarController = UIApplication.shared.windows[0].rootViewController as? MainTabBarController
+        mainTabBarController?.maximizePlayerDetails(episode: nil)
+    }
+    
     @IBOutlet weak var playButton: UIButton! {
         didSet {
             playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
@@ -110,7 +116,8 @@ class PlayerDetailsView: UIView {
         player.volume = sender.value
     }
     @IBAction func dismissButton(_ sender: UIButton) {
-         self.isHidden = true
+        let minimize = UIApplication.shared.windows[0].rootViewController as? MainTabBarController
+        minimize?.minimizePlayerDetails()
         player.pause()
      }
     @IBOutlet weak var authorLabel: UILabel!

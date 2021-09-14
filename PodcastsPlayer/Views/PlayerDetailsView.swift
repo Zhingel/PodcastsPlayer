@@ -39,8 +39,8 @@ class PlayerDetailsView: UIView {
             self?.currentTimeLabel.text = time.toDisplayString()
             let durationTime = self?.player.currentItem?.duration
             self?.durratinLabel.text = durationTime?.toDisplayString()
-            self?.currentTimeSlider.maximumValue = Float(CMTimeGetSeconds(durationTime ?? CMTimeMake(value: 1, timescale: 1)))
-            self?.currentTimeSlider.value = Float(CMTimeGetSeconds(time))
+            self?.currentTimeSlider.maximumValue = 1
+            self?.currentTimeSlider.value = Float(CMTimeGetSeconds(time))/Float(CMTimeGetSeconds(durationTime ?? CMTimeMake(value: 1, timescale: 1)))
         }
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
@@ -109,14 +109,14 @@ class PlayerDetailsView: UIView {
     @IBOutlet weak var durratinLabel: UILabel!
     @IBOutlet weak var currentTimeSlider: UISlider!
     @IBAction func actionCurrentTime(_ sender: UISlider) {
-        currentTimeSlider.value = sender.value
-        player.seek(to: CMTimeMakeWithSeconds(Float64(sender.value), preferredTimescale: Int32(NSEC_PER_SEC)))
+        // currentTimeSlider.value = sender.value
+        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value * Float(CMTimeGetSeconds(self.player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1)))), preferredTimescale: Int32(NSEC_PER_SEC)))
     }
     @IBAction func timeChangeRewind(_ sender: UIButton) {
-        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value) - 15, preferredTimescale: Int32(NSEC_PER_SEC)))
+        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value * Float(CMTimeGetSeconds(self.player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1)))) - 15, preferredTimescale: Int32(NSEC_PER_SEC)))
     }
     @IBAction func timeChangeForward(_ sender: UIButton) {
-        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value) + 15, preferredTimescale: Int32(NSEC_PER_SEC)))
+        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value * Float(CMTimeGetSeconds(self.player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1)))) + 15, preferredTimescale: Int32(NSEC_PER_SEC)))
     }
     @IBAction func volumeChange(_ sender: UISlider) {
         player.volume = sender.value

@@ -17,6 +17,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ho-er-jq7">
                     <rect key="frame" x="0.0" y="44" width="414" height="64"/>
                     <subviews>
+                        <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lU0-6R-vqb">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.5"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="SaK-pt-Fws"/>
+                            </constraints>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vje-Xj-1eq">
                             <rect key="frame" x="8" y="8" width="398" height="48"/>
                             <subviews>
@@ -100,8 +107,11 @@
                         <constraint firstAttribute="trailing" secondItem="Vje-Xj-1eq" secondAttribute="trailing" constant="8" id="1yj-2S-fP9"/>
                         <constraint firstAttribute="bottom" secondItem="Vje-Xj-1eq" secondAttribute="bottom" constant="8" id="2fr-nX-hLv"/>
                         <constraint firstItem="Vje-Xj-1eq" firstAttribute="leading" secondItem="2ho-er-jq7" secondAttribute="leading" constant="8" id="8gE-VH-TB7"/>
+                        <constraint firstAttribute="trailing" secondItem="lU0-6R-vqb" secondAttribute="trailing" id="IM9-2d-pNX"/>
+                        <constraint firstItem="lU0-6R-vqb" firstAttribute="leading" secondItem="2ho-er-jq7" secondAttribute="leading" id="Tub-ui-13w"/>
                         <constraint firstAttribute="height" constant="64" id="gcs-fL-WaE"/>
                         <constraint firstItem="Vje-Xj-1eq" firstAttribute="top" secondItem="2ho-er-jq7" secondAttribute="top" constant="8" id="hNU-47-CNa"/>
+                        <constraint firstItem="lU0-6R-vqb" firstAttribute="top" secondItem="2ho-er-jq7" secondAttribute="top" id="sL9-8v-8RL"/>
                     </constraints>
                 </view>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="mcs-Hy-9gd">

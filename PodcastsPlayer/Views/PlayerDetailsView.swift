@@ -33,6 +33,7 @@ class PlayerDetailsView: UIView {
     
     override func awakeFromNib() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximize)))
+        addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
         super.awakeFromNib()
         let interval = CMTimeMake(value: 1, timescale: 2)
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
@@ -48,7 +49,23 @@ class PlayerDetailsView: UIView {
             self?.inLargeEpisodeImageView()
         }
     }
-
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+        } else if gesture.state == .changed {
+            let translation = gesture.translation(in: self.superview)
+            self.transform = CGAffineTransform(translationX: 0, y: translation.y)
+            self.miniPlayerView.alpha = 1 + translation.y/200
+            self.maximizedStackView.isHidden = false
+            self.maximizedStackView.alpha = -translation.y/200
+        } else if gesture.state == .ended {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut) {
+                self.transform = .identity
+                self.miniPlayerView.alpha = 1
+               
+            }
+            
+        }
+    }
     @objc func handleTapMaximize() {
         let mainTabBarController = UIApplication.shared.windows[0].rootViewController as? MainTabBarController
         mainTabBarController?.maximizePlayerDetails(episode: nil)
@@ -76,7 +93,6 @@ class PlayerDetailsView: UIView {
  
     
     
-    
     //MARK: - Animations image
     
     func inLargeEpisodeImageView() {
@@ -92,11 +108,9 @@ class PlayerDetailsView: UIView {
      
    
     
-    
     //MARK: - Outlets and Actions
     
     @IBOutlet weak var maximizedStackView: UIStackView!
-  
     @IBOutlet weak var imageLabel: UIImageView! {
         didSet {
             let scale: CGFloat  = 0.7
@@ -127,21 +141,18 @@ class PlayerDetailsView: UIView {
      }
     @IBOutlet weak var authorLabel: UILabel!
     
-    
-    
+
     //MARK: - MiniPlayer Outlets and Actions
     @IBOutlet weak var miniPlayerView: UIView!
-    
     @IBOutlet weak var episodeTitleMiniPlayer: UILabel!
     @IBOutlet weak var appIconMiniPlayer: UIImageView!
-  
     @IBOutlet weak var playButtonminiPlayer: UIButton! {
         didSet {
             playButtonminiPlayer.addTarget(self, action: #selector(playPause), for: .touchUpInside)
         }
     }
     @IBAction func forwardButtonMiniPlayer(_ sender: Any) {
-        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value) + 15, preferredTimescale: Int32(NSEC_PER_SEC)))
+        player.seek(to: CMTimeMakeWithSeconds(Float64(currentTimeSlider.value * Float(CMTimeGetSeconds(self.player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1)))) + 15, preferredTimescale: Int32(NSEC_PER_SEC)))
     }
 }
 

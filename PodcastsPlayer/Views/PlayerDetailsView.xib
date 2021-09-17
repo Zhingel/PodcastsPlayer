@@ -117,12 +117,15 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="mcs-Hy-9gd">
                     <rect key="frame" x="24" y="44" width="366" height="794"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQS-LN-4VM">
+                        <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQS-LN-4VM">
                             <rect key="frame" x="0.0" y="0.0" width="366" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="nPb-9a-o7S"/>
                             </constraints>
-                            <state key="normal" title="Dismiss"/>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="chevron.compact.down" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="31" scale="large" weight="regular"/>
+                            </state>
                             <connections>
                                 <action selector="dismissButton:" destination="dGT-1E-Cmd" eventType="touchUpInside" id="N02-tq-36Z"/>
                             </connections>
@@ -285,6 +288,7 @@
     </objects>
     <resources>
         <image name="appicon" width="60" height="60"/>
+        <image name="chevron.compact.down" catalog="system" width="128" height="43"/>
         <image name="fastforward15" width="45.5" height="45.5"/>
         <image name="max_volume" width="32.5" height="32.5"/>
         <image name="muted_volume" width="32.5" height="32.5"/>

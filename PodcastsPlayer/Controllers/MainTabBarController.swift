@@ -10,6 +10,7 @@ import UIKit
 class MainTabBarController: UITabBarController {
     var minimalAnchorConstraints: NSLayoutConstraint!
     var maximalAnchorConstraints: NSLayoutConstraint!
+    var bottomAnchorConstraints: NSLayoutConstraint!
     let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailsView", owner: self)?.first as! PlayerDetailsView
     
     override func viewDidLoad() {
@@ -22,8 +23,9 @@ class MainTabBarController: UITabBarController {
     @objc func minimizePlayerDetails() {
         maximalAnchorConstraints.isActive = false
         minimalAnchorConstraints.isActive = true
-        playerDetailsView.miniPlayerView.isHidden = false
-        playerDetailsView.maximizedStackView.isHidden = true
+        bottomAnchorConstraints.constant = view.frame.height
+        playerDetailsView.miniPlayerView.alpha = 1
+        playerDetailsView.maximizedStackView.alpha = 0
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut) {
             self.view.layoutIfNeeded()
             self.tabBar.isHidden = false
@@ -34,11 +36,12 @@ class MainTabBarController: UITabBarController {
         if episode != nil {
             playerDetailsView.episode = episode
         }
+        minimalAnchorConstraints.isActive = false
         maximalAnchorConstraints.isActive = true
         maximalAnchorConstraints.constant = 0
-        minimalAnchorConstraints.isActive = false
-        playerDetailsView.miniPlayerView.isHidden = true
-        playerDetailsView.maximizedStackView.isHidden = false
+        bottomAnchorConstraints.constant = 0
+        playerDetailsView.miniPlayerView.alpha = 0
+        playerDetailsView.maximizedStackView.alpha = 1
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut) {
             self.view.layoutIfNeeded()
             self.tabBar.isHidden = true
@@ -52,13 +55,15 @@ class MainTabBarController: UITabBarController {
         playerDetailsView.translatesAutoresizingMaskIntoConstraints = false
         maximalAnchorConstraints = playerDetailsView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
         maximalAnchorConstraints.isActive = true
+        bottomAnchorConstraints = playerDetailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: view.frame.height)
+        bottomAnchorConstraints.isActive = true
         minimalAnchorConstraints = playerDetailsView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
 //        minimalAnchorConstraints.isActive = true
         
         
         playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        playerDetailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
     }
     func setupViewController() {
         viewControllers = [generationnavigationController(with: PodcastsSearchController(),

@@ -17,9 +17,25 @@ class PlayerDetailsView: UIView {
             episodeTitleMiniPlayer.text = episode.title
             let url = URL(string: episode.imageUrl ?? "")
             imageLabel.sd_setImage(with: url)
-            appIconMiniPlayer.sd_setImage(with: url)
+            appIconMiniPlayer.sd_setImage(with: url) { image,_,_,_ in
+                guard let image = image else {return}
+                var nowPlayingInfo =  MPNowPlayingInfoCenter.default().nowPlayingInfo
+                let artwork = MPMediaItemArtwork(boundsSize: image.size) { (_) -> UIImage in
+                    return image
+                }
+                nowPlayingInfo?[MPMediaItemPropertyArtwork] = artwork
+                MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+            }
+            setupNowPlayingInfo()
             playEpisode()
         }
+    }
+    func setupNowPlayingInfo() {
+        var nowPlayingInfo = [String : Any]()
+        nowPlayingInfo[MPMediaItemPropertyTitle] = episode.title
+        nowPlayingInfo[MPMediaItemPropertyArtist] = episode.author
+         
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     func playEpisode(){
         guard let url = URL(string: episode.streemUrl) else {return}
@@ -46,11 +62,21 @@ class PlayerDetailsView: UIView {
             self?.currentTimeLabel.text = time.toDisplayString()
             let durationTime = self?.player.currentItem?.duration
             self?.durratinLabel.text = durationTime?.toDisplayString()
+            self?.setupLockScreenCurrentTime()
             self?.currentTimeSlider.maximumValue = 1
             self?.currentTimeSlider.value = Float(CMTimeGetSeconds(time))/Float(CMTimeGetSeconds(durationTime ?? CMTimeMake(value: 1, timescale: 1)))
         }
     }
-    
+    func setupLockScreenCurrentTime() {
+        var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo
+        guard let currentItem = player.currentItem else {return}
+        let durationinSeconds = CMTimeGetSeconds(currentItem.duration)
+        let elapsedTime = CMTimeGetSeconds(player.currentTime())
+        nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
+        nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationinSeconds
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         setupRemoteControl()

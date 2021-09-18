@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import MediaPlayer
 
 class PlayerDetailsView: UIView {
     var episode: Episode! {
@@ -52,6 +53,8 @@ class PlayerDetailsView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupRemoteControl()
+        setupAudioSession()
         setupGestures()
         observePlayerCurrentTime()
         let time = CMTimeMake(value: 1, timescale: 3)
@@ -60,6 +63,41 @@ class PlayerDetailsView: UIView {
             self?.inLargeEpisodeImageView()
         }
     }
+    //MARK: - Playback functions
+    func setupRemoteControl() {
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.playCommand.isEnabled = true
+        commandCenter.playCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+            self.player.play()
+            self.playButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            self.playButtonminiPlayer.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            return .success
+        }
+        commandCenter.pauseCommand.isEnabled = true
+        commandCenter.pauseCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+            self.player.pause()
+            self.playButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            self.playButtonminiPlayer.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+            return .success
+        }
+        commandCenter.togglePlayPauseCommand.isEnabled = true
+        commandCenter.togglePlayPauseCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+            self.playPause()
+            return .success
+        }
+    }
+    func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+            print("Playback OK")
+            try AVAudioSession.sharedInstance().setActive(true)
+            print("Session is Active")
+        } catch {
+            print(error)
+        } 
+    }
+    //MARK: - Drag and drop animation functins
     @objc func handleDismissalPan(gesture: UIPanGestureRecognizer) {
         if gesture.state == .changed {
             let translation = gesture.translation(in: superview)

@@ -8,6 +8,7 @@
 import UIKit
 import AVKit
 import MediaPlayer
+import SDWebImage
 
 class PlayerDetailsView: UIView {
     var episode: Episode! {

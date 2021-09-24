@@ -31,6 +31,7 @@ class PlayerDetailsView: UIView {
             playEpisode()
         }
     }
+    var playlistEpisodes = [Episode]()
     func setupNowPlayingInfo() {
         var nowPlayingInfo = [String : Any]()
         nowPlayingInfo[MPMediaItemPropertyTitle] = episode.title
@@ -63,21 +64,11 @@ class PlayerDetailsView: UIView {
             self?.currentTimeLabel.text = time.toDisplayString()
             let durationTime = self?.player.currentItem?.duration
             self?.durratinLabel.text = durationTime?.toDisplayString()
-//            self?.setupLockScreenCurrentTime()
             self?.currentTimeSlider.maximumValue = 1
             self?.currentTimeSlider.value = Float(CMTimeGetSeconds(time))/Float(CMTimeGetSeconds(durationTime ?? CMTimeMake(value: 1, timescale: 1)))
         }
     }
-//    func setupLockScreenCurrentTime() {
-//        var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo
-//        guard let currentItem = player.currentItem else {return}
-//        let durationinSeconds = CMTimeGetSeconds(currentItem.duration)
-//        let elapsedTime = CMTimeGetSeconds(player.currentTime())
-//        nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
-//        nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationinSeconds
-//        
-//        MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
-//    }
+
     fileprivate func observerBoundaryTime() {
         let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
@@ -126,6 +117,26 @@ class PlayerDetailsView: UIView {
             self.playPause()
             return .success
         }
+        
+       // commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
+    }
+    
+    @objc func handleNextTrack() {
+       
+        if playlistEpisodes.count == 0 {
+            return
+        }
+        let currentEpisodeIndex = playlistEpisodes.firstIndex {(ep) -> Bool in
+            return self.episode.title == ep.title && self.episode.author == ep.author
+        }
+        guard let index = currentEpisodeIndex else {return}
+        let nextEpisode: Episode
+        if index == playlistEpisodes.count - 1 {
+             nextEpisode = playlistEpisodes[0]
+        } else {
+        nextEpisode = playlistEpisodes[index + 1]
+        }
+        self.episode = nextEpisode
     }
     fileprivate func setupElapsedTime() {
         let elapsedTime = CMTimeGetSeconds(player.currentTime())

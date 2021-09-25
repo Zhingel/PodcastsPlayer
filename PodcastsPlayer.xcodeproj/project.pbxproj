@@ -29,6 +29,7 @@
 		EE85E3D226E8CD3A0027EF64 /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */; };
 		EE85E3D426E8D6760027EF64 /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */; };
 		EECEBA8626FF63710098CB16 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEBA8526FF63710098CB16 /* FavoritesController.swift */; };
+		EECEBA8826FF6B0A0098CB16 /* FavoritesPodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEBA8726FF6B0A0098CB16 /* FavoritesPodcastCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
 		EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
 		EECEBA8526FF63710098CB16 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
+		EECEBA8726FF6B0A0098CB16 /* FavoritesPodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPodcastCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */,
 				EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */,
 				EE0B68D526E65DA4000FDD2B /* EpisodeCell.swift */,
+				EECEBA8726FF6B0A0098CB16 /* FavoritesPodcastCell.swift */,
 				EE0B68D626E65DA4000FDD2B /* EpisodeCell.xib */,
 			);
 			path = Views;
@@ -294,6 +297,7 @@
 				EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */,
 				EE0B68CD26E53734000FDD2B /* PodcastCell.swift in Sources */,
 				EE6BD19526EE75B80004818E /* CMTime.swift in Sources */,
+				EECEBA8826FF6B0A0098CB16 /* FavoritesPodcastCell.swift in Sources */,
 				EE6BD19726EE75D80004818E /* CMTime.swift in Sources */,
 				EE0B68D726E65DA4000FDD2B /* EpisodeCell.swift in Sources */,
 				EE0B68D426E65CF1000FDD2B /* Episode.swift in Sources */,

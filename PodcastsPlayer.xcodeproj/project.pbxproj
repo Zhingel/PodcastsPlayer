@@ -28,6 +28,7 @@
 		EE6BD19726EE75D80004818E /* CMTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6BD19626EE75D80004818E /* CMTime.swift */; };
 		EE85E3D226E8CD3A0027EF64 /* PlayerDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */; };
 		EE85E3D426E8D6760027EF64 /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */; };
+		EECEBA8626FF63710098CB16 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEBA8526FF63710098CB16 /* FavoritesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		EE6BD19626EE75D80004818E /* CMTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CMTime.swift; sourceTree = "<group>"; };
 		EE85E3D126E8CD3A0027EF64 /* PlayerDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailsView.xib; sourceTree = "<group>"; };
 		EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
+		EECEBA8526FF63710098CB16 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				EE26AE4F26E37FD900759469 /* PodcastsSearchController.swift */,
 				EE0B68CE26E6035F000FDD2B /* EpisodesController.swift */,
+				EECEBA8526FF63710098CB16 /* FavoritesController.swift */,
 				EE26AE4B26E271ED00759469 /* MainTabBarController.swift */,
 				EE26AE3B26E271C800759469 /* ViewController.swift */,
 			);
@@ -287,6 +290,7 @@
 			files = (
 				EE85E3D426E8D6760027EF64 /* PlayerDetailsView.swift in Sources */,
 				EE26AE3C26E271C800759469 /* ViewController.swift in Sources */,
+				EECEBA8626FF63710098CB16 /* FavoritesController.swift in Sources */,
 				EE26AE3826E271C800759469 /* AppDelegate.swift in Sources */,
 				EE0B68CD26E53734000FDD2B /* PodcastCell.swift in Sources */,
 				EE6BD19526EE75B80004818E /* CMTime.swift in Sources */,

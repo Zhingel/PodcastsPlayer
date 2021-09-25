@@ -84,6 +84,7 @@ class PlayerDetailsView: UIView {
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationSeconds
     }
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupRemoteControl()
@@ -91,6 +92,7 @@ class PlayerDetailsView: UIView {
         setupGestures()
         observePlayerCurrentTime()
         observerBoundaryTime()
+        
     }
     //MARK: - Playback functions
     func setupRemoteControl() {

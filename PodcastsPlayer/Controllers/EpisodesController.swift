@@ -22,9 +22,21 @@ class EpisodesController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "EpisodeCell", bundle: nil), forCellReuseIdentifier: "Cell")
         tableView.tableFooterView = UIView()
+        setupNavigationBarButtons()
     }
     
-    
+    fileprivate func setupNavigationBarButtons() {
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
+            UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handleFetchSavedPodcasts))
+        ]
+    }
+    @objc func handleFetchSavedPodcasts() {
+        print("Fetch podcasts")
+    }
+    @objc func handleSaveFavorite() {
+        
+    }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let activityIndicatorView = UIActivityIndicatorView(style: .large)

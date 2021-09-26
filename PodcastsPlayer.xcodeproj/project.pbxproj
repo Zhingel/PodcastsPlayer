@@ -30,6 +30,7 @@
 		EE85E3D426E8D6760027EF64 /* PlayerDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */; };
 		EECEBA8626FF63710098CB16 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEBA8526FF63710098CB16 /* FavoritesController.swift */; };
 		EECEBA8826FF6B0A0098CB16 /* FavoritesPodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEBA8726FF6B0A0098CB16 /* FavoritesPodcastCell.swift */; };
+		EECEBA8A2700905C0098CB16 /* Userdefoults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECEBA892700905C0098CB16 /* Userdefoults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		EE85E3D326E8D6760027EF64 /* PlayerDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsView.swift; sourceTree = "<group>"; };
 		EECEBA8526FF63710098CB16 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		EECEBA8726FF6B0A0098CB16 /* FavoritesPodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesPodcastCell.swift; sourceTree = "<group>"; };
+		EECEBA892700905C0098CB16 /* Userdefoults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Userdefoults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				EE26AE3726E271C800759469 /* AppDelegate.swift */,
 				EE6BD19626EE75D80004818E /* CMTime.swift */,
 				EE6BD19426EE75B80004818E /* CMTime.swift */,
+				EECEBA892700905C0098CB16 /* Userdefoults.swift */,
 				EE0B68C926E5346D000FDD2B /* Views */,
 				EE26AE3926E271C800759469 /* SceneDelegate.swift */,
 				EE26AE4E26E37FB500759469 /* Controllers */,
@@ -306,6 +309,7 @@
 				EE0B68C826E52951000FDD2B /* APIServiceClass.swift in Sources */,
 				EE26AE5226E37FF800759469 /* Podcasts.swift in Sources */,
 				EE26AE3A26E271C800759469 /* SceneDelegate.swift in Sources */,
+				EECEBA8A2700905C0098CB16 /* Userdefoults.swift in Sources */,
 				EE0B68CF26E6035F000FDD2B /* EpisodesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

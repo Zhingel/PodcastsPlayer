@@ -33,8 +33,8 @@ class EpisodesController: UITableViewController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: nil, action: nil)
         } else {
             navigationItem.rightBarButtonItems = [
-                UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
-                UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handleFetchSavedPodcasts))
+                UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(handleSaveFavorite)),
+//                UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handleFetchSavedPodcasts))
             ]
         }
        
@@ -60,11 +60,12 @@ class EpisodesController: UITableViewController {
         catch {
             print(error)
         }
-         ()
+        showSadgeHightLight()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: nil, action: nil)
     }
     
-    fileprivate showSadgeHightLight() {
-        
+    fileprivate func showSadgeHightLight() {
+        UIApplication.mainTabBarController()?.viewControllers?[1].tabBarItem.badgeValue = "New"
     }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let activityIndicatorView = UIActivityIndicatorView(style: .large)

@@ -33,9 +33,19 @@ class EpisodesController: UITableViewController {
     }
     @objc func handleFetchSavedPodcasts() {
         print("Fetch podcasts")
+        guard let data = UserDefaults.standard.data(forKey: favoritesPodcastKey) else {return}
+        let podcast = NSKeyedUnarchiver.unarchiveObject(with: data) as? Podcast
     }
+    let favoritesPodcastKey = "favoritesPodcastKey"
     @objc func handleSaveFavorite() {
-        
+        guard let podcast = self.podcast else {return}
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: podcast, requiringSecureCoding: false)
+            UserDefaults.standard.set(data, forKey: favoritesPodcastKey)
+        }
+        catch {
+            print(error)
+        }
     }
     
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

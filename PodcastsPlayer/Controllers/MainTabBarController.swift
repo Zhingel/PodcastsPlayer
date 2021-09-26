@@ -75,7 +75,7 @@ class MainTabBarController: UITabBarController {
                            generationnavigationController(with: favoritesController,
                                                           image: UIImage(named: "favorites")!,
                                                           title: "Favorites"),
-                           generationnavigationController(with: ViewController(),
+                           generationnavigationController(with: DownloadsController(),
                                                           image: UIImage(named: "downloads")!,
                                                           title: "Downloads")]
     }

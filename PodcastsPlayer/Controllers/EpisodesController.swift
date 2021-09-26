@@ -67,6 +67,14 @@ class EpisodesController: UITableViewController {
     fileprivate func showSadgeHightLight() {
         UIApplication.mainTabBarController()?.viewControllers?[1].tabBarItem.badgeValue = "New"
     }
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let downloadAction = UITableViewRowAction(style: .normal, title: "Download") { _, _ in
+            print("downloading episodes into UserDefaults")
+            let episode = self.episodes[indexPath.row]
+            UserDefaults.standard.downloadEpisode(episode: episode)
+        }
+        return [downloadAction]
+    }
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.color = .darkGray
@@ -95,6 +103,7 @@ class EpisodesController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! EpisodeCell
         cell.episode = episodes[indexPath.row]
+        
         return cell
     }
     

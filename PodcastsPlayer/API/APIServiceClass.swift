@@ -27,4 +27,16 @@ class APIService {
             }
         }
     }
+    func downloadEpisode(episode: Episode) {
+        print("загрузка", episode.streemUrl)
+        let downloadRequest = DownloadRequest.suggestedDownloadDestination()
+        AF.download(episode.streemUrl, to: downloadRequest).downloadProgress { progress in
+            print(progress.fractionCompleted)
+        }.response { resp in
+//            print(resp.destinationURL?.absoluteString ?? "")
+//            let downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
+//            downloadedEpisodes.index(where: ($0. == episode.title))
+        }
+        
+    }
 }

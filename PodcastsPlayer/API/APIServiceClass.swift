@@ -33,11 +33,18 @@ class APIService {
         AF.download(episode.streemUrl, to: downloadRequest).downloadProgress { progress in
             print(progress.fractionCompleted)
         }.response { resp in
-//            print("gggggg \(resp.destinationURL.absoluteString ?? "")")
+          //  print("gggggg \(resp.fileURL?.absoluteString ?? "")")
             var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
             guard let index = downloadedEpisodes.firstIndex(where: {$0.title == episode.title && $0.author == episode.author}) else {return}
             downloadedEpisodes[index].fileUrl = resp.fileURL?.absoluteString ?? ""
             print("downloadedFile ------//",downloadedEpisodes[index].fileUrl ?? "dont have file")
+            do {
+                let data = try JSONEncoder().encode(downloadedEpisodes)
+                UserDefaults.standard.set(data, forKey: UserDefaults.downloadedEpisodeKey)
+            } catch let err {
+                print("Failed to encode ", err)
+            }
+            
           
         }
         

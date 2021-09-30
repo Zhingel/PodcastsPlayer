@@ -34,8 +34,10 @@ class APIService {
             print(progress.fractionCompleted)
         }.response { resp in
 //            print("gggggg \(resp.destinationURL.absoluteString ?? "")")
-//            let downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
-//            downloadedEpisodes.index(where: ($0. == episode.title))
+            var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
+            guard let index = downloadedEpisodes.firstIndex(where: {$0.title == episode.title && $0.author == episode.author}) else {return}
+            downloadedEpisodes[index].fileUrl = resp.fileURL?.absoluteString ?? ""
+            print("downloadedFile ------//",downloadedEpisodes[index].fileUrl ?? "dont have file")
           
         }
         

@@ -44,7 +44,6 @@ class APIService {
             } catch let err {
                 print("Failed to encode ", err)
             }
-            
           
         }
         

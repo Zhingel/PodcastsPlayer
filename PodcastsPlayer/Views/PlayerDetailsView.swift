@@ -40,9 +40,21 @@ class PlayerDetailsView: UIView {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
     }
     func playEpisode(){
-        guard let url = URL(string: episode.streemUrl) else {return}
-        let playerItem = AVPlayerItem(url: url)
-        player.replaceCurrentItem(with: playerItem)
+        if episode.fileUrl != nil {
+            guard let fileURL = URL(string: episode.fileUrl ?? "") else {return}
+            let fileName = fileURL.lastPathComponent
+            guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {return}
+            trueLocation.appendPathComponent(fileName)
+            print(trueLocation.absoluteString)
+            let playerItem = AVPlayerItem(url: trueLocation)
+            player.replaceCurrentItem(with: playerItem)
+ 
+        } else {
+            guard let url = URL(string: episode.streemUrl) else {return}
+            let playerItem = AVPlayerItem(url: url)
+            player.replaceCurrentItem(with: playerItem)
+
+        }
     }
     let player: AVPlayer = {
         let avPlayer = AVPlayer()

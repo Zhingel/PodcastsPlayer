@@ -32,5 +32,7 @@ class EpisodeCell: UITableViewCell {
             titleLabel.numberOfLines = 2
         }
     }
+    
+    @IBOutlet weak var percentLabel: UILabel!
     @IBOutlet weak var imageLabel: UIImageView!
 }

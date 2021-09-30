@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,6 +47,14 @@
                             </label>
                         </subviews>
                     </stackView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQF-kk-YLt">
+                        <rect key="frame" x="28" y="41" width="77" height="54"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <size key="shadowOffset" width="0.0" height="1"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Qwt-G9-vLF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="5cn-ci-V0I"/>
@@ -53,6 +62,8 @@
                     <constraint firstAttribute="bottom" secondItem="Qwt-G9-vLF" secondAttribute="bottom" constant="18" id="YRt-Ag-R8R"/>
                     <constraint firstAttribute="trailing" secondItem="qqo-pW-WXV" secondAttribute="trailing" constant="16" id="ZMd-P3-XY8"/>
                     <constraint firstItem="Qwt-G9-vLF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZRG-58-Gq5"/>
+                    <constraint firstItem="JQF-kk-YLt" firstAttribute="centerX" secondItem="Qwt-G9-vLF" secondAttribute="centerX" id="a50-JO-oKS"/>
+                    <constraint firstItem="JQF-kk-YLt" firstAttribute="centerY" secondItem="Qwt-G9-vLF" secondAttribute="centerY" id="gkg-gK-8Zc"/>
                     <constraint firstItem="Qwt-G9-vLF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="n1S-lx-0kc"/>
                     <constraint firstItem="qqo-pW-WXV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xv6-Ok-iTy"/>
                 </constraints>
@@ -62,6 +73,7 @@
                 <outlet property="dateLabel" destination="pPV-eK-Miz" id="neQ-P4-61n"/>
                 <outlet property="descriptionLabel" destination="kBI-r4-WRf" id="e6g-sL-u3Z"/>
                 <outlet property="imageLabel" destination="Qwt-G9-vLF" id="oEt-Qq-uub"/>
+                <outlet property="percentLabel" destination="JQF-kk-YLt" id="ois-O6-A3t"/>
                 <outlet property="titleLabel" destination="hav-W8-Pby" id="KFF-Lr-Npb"/>
             </connections>
             <point key="canvasLocation" x="84.057971014492765" y="85.714285714285708"/>

@@ -20,6 +20,20 @@ extension UserDefaults {
             print(error)
         }
     }
+    func deleteEpisode(episode: Episode) {
+        let savedEpisodes = downloadedEpisodes()
+        let filteredEpisodes = savedEpisodes.filter { (e) -> Bool in
+            // you should use episode.collectionId to be safer with deletes
+            return e.title != episode.title
+        }
+        
+        do {
+            let data = try JSONEncoder().encode(filteredEpisodes)
+            UserDefaults.standard.set(data, forKey: UserDefaults.downloadedEpisodeKey)
+        } catch let encodeErr {
+            print("Failed to encode episode:", encodeErr)
+        }
+    }
     func downloadedEpisodes() -> [Episode] {
         guard let episodesData = data(forKey: UserDefaults.downloadedEpisodeKey) else {return []}
         do {
@@ -43,4 +57,5 @@ extension UserDefaults {
         let data = NSKeyedArchiver.archivedData(withRootObject: filteredPodcasts)
         UserDefaults.standard.set(data, forKey: UserDefaults.favoritesPodcastKey)
     }
+    
 }

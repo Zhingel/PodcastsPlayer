@@ -73,6 +73,8 @@ class EpisodesController: UITableViewController {
             let episode = self.episodes[indexPath.row]
             UserDefaults.standard.downloadEpisode(episode: episode)
             APIService.shared.downloadEpisode(episode: episode)
+            let download = DownloadsController()
+            download.showSadgeHightLightDownload()
         }
         return [downloadAction]
     }

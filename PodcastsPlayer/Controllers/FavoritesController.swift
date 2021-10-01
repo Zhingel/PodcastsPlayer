@@ -33,9 +33,9 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
         print(selectedIndex .item)
         let alertController = UIAlertController(title: "Remove Podcast", message: nil, preferredStyle: .actionSheet)
         alertController.addAction(UIAlertAction(title: "Delete", style: .destructive , handler: { _ in
-            self.collectionView.deleteItems(at: [selectedIndex])
-            self.podcasts.remove(at: selectedIndex.item)
             let selectedPodcast = self.podcasts[selectedIndex.item]
+            self.podcasts.remove(at: selectedIndex.item)
+            self.collectionView.deleteItems(at: [selectedIndex])
             UserDefaults.standard.deletePodcast(podcast: selectedPodcast)
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))

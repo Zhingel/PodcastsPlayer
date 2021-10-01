@@ -18,7 +18,8 @@ class APIService {
     static let shared = APIService()
     func fetchPodcasts(searchText: String, compilitionHendler: @escaping ([Podcast]) -> ()) {
         let freedSpaceString = searchText.filter {!$0.isWhitespace}
-        let url = "https://itunes.apple.com/search?term=\(freedSpaceString)&country=ru&entity=podcast"
+        var url = "https://itunes.apple.com/search?term=\(freedSpaceString)&country=ru&entity=podcast"
+        url = url.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)!
         AF.request(url).responseData { dataResponse in
             if let err = dataResponse.error {
                 print("Errr", err)

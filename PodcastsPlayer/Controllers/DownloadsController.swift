@@ -54,6 +54,7 @@ class DownloadsController: UITableViewController {
         tableView.backgroundColor = .white
         let nib = UINib(nibName: "EpisodeCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
+        tableView.contentInset.bottom = 60
        
     }
   
